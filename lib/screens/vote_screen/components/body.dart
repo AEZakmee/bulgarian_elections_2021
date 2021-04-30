@@ -1,0 +1,201 @@
+import 'package:auto_size_text/auto_size_text.dart';
+import 'package:flutter/material.dart';
+import 'package:mashinno_glasuvane/constants.dart';
+import 'package:mashinno_glasuvane/model/data.dart';
+import 'package:mashinno_glasuvane/screens/checkresult_screen/checkresult_screen.dart';
+import 'package:mashinno_glasuvane/size_config.dart';
+import 'package:mashinno_glasuvane/utilities/default_button.dart';
+import 'package:provider/provider.dart';
+
+import 'parties_row.dart';
+import 'preference_box.dart';
+
+class Body extends StatefulWidget {
+  @override
+  _BodyState createState() => _BodyState();
+}
+
+class _BodyState extends State<Body> {
+  String votedString = '';
+  @override
+  Widget build(BuildContext context) {
+    return SafeArea(
+      child: Center(
+        child: Container(
+          width: SizeConfig.screenWidth - getProportionateScreenWidth(10),
+          child: Consumer<Data>(builder: (context, data, child) {
+            return Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Spacer(),
+                Text(
+                  'Парламентарни избори 2021',
+                  style: TextStyle(
+                    fontSize: getProportionateScreenWidth(20),
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+                SizedBox(
+                  height: getProportionateScreenHeight(15),
+                ),
+                Container(
+                  height: getProportionateScreenHeight(650),
+                  decoration: BoxDecoration(
+                    border: Border.all(
+                        color: kDefaultColor,
+                        width: getProportionateScreenHeight(5)),
+                  ),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: Column(
+                          children: [
+                            ...List.generate(
+                              data.partiesSubList.length,
+                              (index) => PartyRow(
+                                onPress: () {
+                                  data.selectParty(index);
+                                },
+                                party: data.partiesSubList[index],
+                                isSelectedParty: data.selectedParty != null
+                                    ? data.partiesSubList[index].number ==
+                                        data.selectedParty.number
+                                    : false,
+                              ),
+                            ),
+                            Spacer(),
+                            Padding(
+                              padding: EdgeInsets.symmetric(
+                                horizontal: getProportionateScreenWidth(10),
+                                //vertical: getProportionateScreenHeight(30),
+                              ),
+                              child: Row(
+                                children: [
+                                  DefaultEmptyButton(
+                                    text: 'Предишен',
+                                    onPress: () {
+                                      print('clocked prev');
+                                      data.prevPage();
+                                    },
+                                    size: getProportionateScreenWidth(90),
+                                    verticalSize:
+                                        getProportionateScreenHeight(35),
+                                  ),
+                                  Spacer(),
+                                  DefaultEmptyButton(
+                                    text: 'Следващ',
+                                    onPress: () {
+                                      print('clocked next');
+                                      data.nextPage();
+                                    },
+                                    size: getProportionateScreenWidth(90),
+                                    verticalSize:
+                                        getProportionateScreenHeight(35),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            SizedBox(
+                              height: getProportionateScreenHeight(20),
+                            ),
+                          ],
+                        ),
+                        flex: 5,
+                      ),
+                      Container(
+                        color: kDefaultColor,
+                        width: getProportionateScreenWidth(2),
+                      ),
+                      Expanded(
+                        child: Padding(
+                          padding: EdgeInsets.symmetric(
+                            horizontal: getProportionateScreenWidth(2),
+                            vertical: getProportionateScreenHeight(15),
+                          ),
+                          child: Column(
+                            children: [
+                              AutoSizeText(
+                                'Предпочитание (преференция) за кандидат',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.w700,
+                                  //fontSize: getProportionateScreenWidth(10),
+                                ),
+                                minFontSize: 1,
+                                maxFontSize: 30,
+                                maxLines: 2,
+                                textAlign: TextAlign.center,
+                              ),
+                              SizedBox(
+                                height: getProportionateScreenHeight(20),
+                              ),
+                              Wrap(
+                                spacing: getProportionateScreenWidth(4),
+                                children: [
+                                  ...List.generate(
+                                    18,
+                                    (index) => Padding(
+                                      padding: EdgeInsets.symmetric(
+                                        //horizontal: getProportionateScreenWidth(2),
+                                        vertical:
+                                            getProportionateScreenHeight(8),
+                                      ),
+                                      child: PreferenceBox(
+                                        number: index,
+                                        onPress: () {
+                                          data.selectPerson(index);
+                                        },
+                                        clickable: (data.selectedParty != null)
+                                            ? data.selectedParty.people.length >
+                                                index
+                                            : false,
+                                        isSelectedBox: data.selectedPerson !=
+                                                null
+                                            ? data.selectedParty.people.length >
+                                                    index
+                                                ? data.selectedPerson.number ==
+                                                    data.selectedParty
+                                                        .people[index].number
+                                                : false
+                                            : false,
+                                      ),
+                                    ),
+                                  )
+                                ],
+                              )
+                            ],
+                          ),
+                        ),
+                        flex: 3,
+                      ),
+                    ],
+                  ),
+                ),
+                SizedBox(
+                  height: getProportionateScreenHeight(15),
+                ),
+                Row(
+                  children: [
+                    Spacer(),
+                    Text(votedString),
+                    DefaultButton(
+                      text: 'Преглед',
+                      onPress: () {
+                        if (data.selectedParty != null) {
+                          Navigator.popAndPushNamed(
+                              context, CheckResultWindow.routeName);
+                        }
+                      },
+                      size: getProportionateScreenWidth(150),
+                      verticalSize: getProportionateScreenHeight(40),
+                    ),
+                  ],
+                ),
+                Spacer(),
+              ],
+            );
+          }),
+        ),
+      ),
+    );
+  }
+}
