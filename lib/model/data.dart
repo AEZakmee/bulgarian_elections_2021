@@ -28,6 +28,12 @@ class Data extends ChangeNotifier {
     }
   }
 
+  void firstPage() {
+    _currentPage = 0;
+    _loadNewList();
+    notifyListeners();
+  }
+
   void _loadNewList() {
     _partiesSubList = _parties.sublist(
         _currentPage * 13,

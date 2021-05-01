@@ -87,7 +87,13 @@ class Body extends StatelessWidget {
             DefaultButton(
               text: 'Промени избор',
               onPress: () {
-                Navigator.popAndPushNamed(context, VoteScreen.routeName);
+                Navigator.pushReplacement(
+                  context,
+                  PageRouteBuilder(
+                    pageBuilder: (_, __, ___) => VoteScreen(),
+                    transitionDuration: Duration(seconds: 0),
+                  ),
+                );
               },
               size: getProportionateScreenWidth(250),
               verticalSize: getProportionateScreenHeight(50),

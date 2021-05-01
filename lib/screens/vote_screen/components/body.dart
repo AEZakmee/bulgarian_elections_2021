@@ -181,8 +181,13 @@ class _BodyState extends State<Body> {
                       text: 'Преглед',
                       onPress: () {
                         if (data.selectedParty != null) {
-                          Navigator.popAndPushNamed(
-                              context, CheckResultWindow.routeName);
+                          Navigator.pushReplacement(
+                            context,
+                            PageRouteBuilder(
+                              pageBuilder: (_, __, ___) => CheckResultWindow(),
+                              transitionDuration: Duration(seconds: 0),
+                            ),
+                          );
                         }
                       },
                       size: getProportionateScreenWidth(150),
