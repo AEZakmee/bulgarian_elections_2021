@@ -1,5 +1,6 @@
 # Реплика на машината за гласуване - Приложение за таблет/телефон/Web.
 ## Създадено с цел подпомагане на хората, които не знаят как се използва машината :)
+## Изпробвайте го [ТУК](https://aezakmee.github.io/mg_page/#/).
 <br/>
 <img src="https://github.com/AEZakmee/bulgarian_elections_2021/blob/master/screenshots/votegif.gif" width=400 align=center>
 <br/>
