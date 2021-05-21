@@ -19,7 +19,7 @@ class Body extends StatelessWidget {
               child: Text(
                 'Вие гласувахте успешно!',
                 style: TextStyle(
-                  fontSize: getProportionateScreenWidth(30),
+                  fontSize: getProportionateScreenWidth(25),
                   fontWeight: FontWeight.bold,
                 ),
                 maxLines: 1,
