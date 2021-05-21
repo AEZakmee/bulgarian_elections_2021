@@ -1,4 +1,3 @@
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:mashinno_glasuvane/constants.dart';
 
@@ -31,14 +30,12 @@ class DefaultButton extends StatelessWidget {
         elevation: 5,
         borderRadius: BorderRadius.circular(10),
         child: MaterialButton(
-          child: AutoSizeText(
+          child: Text(
             text,
             style: TextStyle(
               color: textColor,
               fontSize: verticalSize / 2,
             ),
-            maxFontSize: 100,
-            minFontSize: 1,
             maxLines: 1,
           ),
           onPressed: onPress,

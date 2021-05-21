@@ -1,4 +1,3 @@
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:mashinno_glasuvane/constants.dart';
 import 'package:mashinno_glasuvane/model/data.dart';
@@ -19,6 +18,7 @@ class _BodyState extends State<Body> {
   String votedString = '';
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     return SafeArea(
       child: Center(
         child: Container(
@@ -114,14 +114,12 @@ class _BodyState extends State<Body> {
                           ),
                           child: Column(
                             children: [
-                              AutoSizeText(
+                              Text(
                                 'Предпочитание (преференция) за кандидат',
                                 style: TextStyle(
                                   fontWeight: FontWeight.w700,
-                                  //fontSize: getProportionateScreenWidth(10),
+                                  fontSize: getProportionateScreenWidth(8),
                                 ),
-                                minFontSize: 1,
-                                maxFontSize: 30,
                                 maxLines: 2,
                                 textAlign: TextAlign.center,
                               ),

@@ -29,7 +29,7 @@ class PreferenceBox extends StatelessWidget {
               width: getProportionateScreenWidth(1.5)),
         ),
         padding: EdgeInsets.all(
-          getProportionateScreenWidth(6),
+          getProportionateScreenWidth(5.5),
         ),
         child: Text(
           (101 + number).toString(),
@@ -40,7 +40,7 @@ class PreferenceBox extends StatelessWidget {
                     ? Colors.white
                     : kDefaultColor,
             fontWeight: FontWeight.bold,
-            fontSize: getProportionateScreenWidth(13),
+            fontSize: getProportionateScreenWidth(12.6),
           ),
         ),
       ),

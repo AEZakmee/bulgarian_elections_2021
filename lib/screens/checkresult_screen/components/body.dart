@@ -10,6 +10,7 @@ import 'package:provider/provider.dart';
 class Body extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     return Center(
       child: Container(
         height: SizeConfig.screenHeight,

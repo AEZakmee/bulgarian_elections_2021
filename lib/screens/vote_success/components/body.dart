@@ -1,4 +1,3 @@
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:mashinno_glasuvane/model/data.dart';
 import 'package:mashinno_glasuvane/size_config.dart';
@@ -8,31 +7,38 @@ import 'package:provider/provider.dart';
 class Body extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     return Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          AutoSizeText(
-            'Благодарим за вота!',
-            style: TextStyle(
-              fontSize: getProportionateScreenWidth(300),
-              fontWeight: FontWeight.bold,
+      child: Container(
+        height: SizeConfig.screenHeight,
+        width: SizeConfig.screenWidth,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Center(
+              child: Text(
+                'Вие гласувахте успешно!',
+                style: TextStyle(
+                  fontSize: getProportionateScreenWidth(30),
+                  fontWeight: FontWeight.bold,
+                ),
+                maxLines: 1,
+              ),
             ),
-            maxLines: 1,
-          ),
-          SizedBox(
-            height: getProportionateScreenHeight(40),
-          ),
-          DefaultButton(
-            text: 'Пробвай пак',
-            onPress: () {
-              Provider.of<Data>(context, listen: false).clearVote();
-              Navigator.pop(context);
-            },
-            size: getProportionateScreenWidth(200),
-            verticalSize: getProportionateScreenHeight(50),
-          ),
-        ],
+            SizedBox(
+              height: getProportionateScreenHeight(40),
+            ),
+            DefaultButton(
+              text: 'Гласувай пак',
+              onPress: () {
+                Provider.of<Data>(context, listen: false).clearVote();
+                Navigator.pop(context);
+              },
+              size: getProportionateScreenWidth(200),
+              verticalSize: getProportionateScreenHeight(50),
+            ),
+          ],
+        ),
       ),
     );
   }

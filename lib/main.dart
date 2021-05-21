@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        title: 'Elections',
+        title: 'Избори България - Реплика',
         theme: ThemeData(
           textTheme: TextTheme(
             bodyText1: TextStyle(
