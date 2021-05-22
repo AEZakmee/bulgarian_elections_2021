@@ -21,13 +21,13 @@ class Body extends StatelessWidget {
                 height: getProportionateScreenHeight(30),
               ),
               Text(
-                "Реплика машинно гласуване. \nБългария 2021",
+                "Парламентарни избори\nБългария 2021\nРеплика",
                 style: TextStyle(
-                  fontSize: getProportionateScreenWidth(30),
+                  fontSize: getProportionateScreenWidth(25),
                   fontWeight: FontWeight.bold,
                 ),
                 textAlign: TextAlign.center,
-                maxLines: 3,
+                maxLines: 4,
               ),
               Spacer(),
               DefaultButton(
@@ -42,7 +42,7 @@ class Body extends StatelessWidget {
               ),
               Spacer(),
               Text(
-                "Системата е създадена изцяло с идеята, да покаже на хората процеса при машинно гласуване.\nСистемата НЯМА за цел, да агитира или подпомага дадена политическа партия.\nСистемата НЯМА НИЩО ОБЩО с изборите и централната избирателна комисия",
+                "Системата е създадена изцяло с идеята, да покаже на хората процеса при машинно гласуване.\nСистемата НЯМА за цел, да агитира или подкрепя дадена политическа партия.\nСистемата НЯМА НИЩО ОБЩО с изборите и централната избирателна комисия",
                 style: TextStyle(
                     fontSize: getProportionateScreenWidth(12),
                     color: Colors.grey),
@@ -59,10 +59,12 @@ class Body extends StatelessWidget {
                       right: getProportionateScreenWidth(5),
                     ),
                     child: Text(
-                      "Създадено от Кристиян Цанков",
+                      "Created by Kristiyan Tsankov",
                       style: TextStyle(
-                          fontSize: getProportionateScreenWidth(12),
-                          color: Colors.grey),
+                        fontSize: getProportionateScreenWidth(10),
+                        color: Colors.grey,
+                        fontWeight: FontWeight.w700,
+                      ),
                       textAlign: TextAlign.right,
                     ),
                   ),

@@ -26,6 +26,20 @@ class Body extends StatelessWidget {
               ),
             ),
             SizedBox(
+              height: getProportionateScreenHeight(20),
+            ),
+            Center(
+              child: Text(
+                'Вземете разписката, сгънете я на две!\nСлед което я пуснете в непрозрачната кутия пред комисията.',
+                style: TextStyle(
+                  fontSize: getProportionateScreenWidth(9.5),
+                  fontWeight: FontWeight.bold,
+                ),
+                textAlign: TextAlign.center,
+                maxLines: 3,
+              ),
+            ),
+            SizedBox(
               height: getProportionateScreenHeight(40),
             ),
             DefaultButton(
