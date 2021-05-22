@@ -111,6 +111,8 @@ class Body extends StatelessWidget {
                   child: DefaultButton(
                     text: 'Гласуване',
                     onPress: () {
+                      Provider.of<Data>(context, listen: false).clearVote();
+                      Provider.of<Data>(context, listen: false).firstPage();
                       Navigator.popAndPushNamed(
                           context, VoteSuccessWindow.routeName);
                     },

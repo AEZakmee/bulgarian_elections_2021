@@ -28,13 +28,13 @@ class DefaultButton extends StatelessWidget {
       child: Material(
         color: color,
         elevation: 5,
-        borderRadius: BorderRadius.circular(10),
+        borderRadius: BorderRadius.circular(getProportionateScreenHeight(10)),
         child: MaterialButton(
           child: Text(
             text,
             style: TextStyle(
               color: textColor,
-              fontSize: verticalSize / 2,
+              fontSize: verticalSize / 2 - getProportionateScreenWidth(3),
             ),
             maxLines: 1,
           ),
@@ -71,7 +71,7 @@ class DefaultEmptyButton extends StatelessWidget {
         width: size,
         decoration: BoxDecoration(
           color: color,
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(getProportionateScreenHeight(10)),
           border: Border.all(color: kDefaultColor),
         ),
         child: Center(

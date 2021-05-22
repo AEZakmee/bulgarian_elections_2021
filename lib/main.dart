@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        title: 'Машинно гласуване - реплика',
+        title: 'Машинно гласуване - симулатор',
         theme: ThemeData(
           textTheme: TextTheme(
             bodyText1: TextStyle(

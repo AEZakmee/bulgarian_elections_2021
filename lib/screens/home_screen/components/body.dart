@@ -21,7 +21,7 @@ class Body extends StatelessWidget {
                 height: getProportionateScreenHeight(30),
               ),
               Text(
-                "Парламентарни избори\nБългария 2021\nРеплика",
+                "Парламентарни избори\nБългария 2021\nСимулатор",
                 style: TextStyle(
                   fontSize: getProportionateScreenWidth(25),
                   fontWeight: FontWeight.bold,
@@ -38,7 +38,7 @@ class Body extends StatelessWidget {
                   Navigator.pushNamed(context, VoteScreen.routeName);
                 },
                 size: getProportionateScreenWidth(300),
-                verticalSize: getProportionateScreenHeight(150),
+                verticalSize: getProportionateScreenHeight(100),
               ),
               Spacer(),
               Text(
