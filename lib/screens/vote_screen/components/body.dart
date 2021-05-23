@@ -15,7 +15,6 @@ class Body extends StatefulWidget {
 }
 
 class _BodyState extends State<Body> {
-  String votedString = '';
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
@@ -174,7 +173,6 @@ class _BodyState extends State<Body> {
                 Row(
                   children: [
                     Spacer(),
-                    Text(votedString),
                     DefaultButton(
                       text: 'Преглед',
                       onPress: () {

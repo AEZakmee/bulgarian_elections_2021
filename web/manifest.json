@@ -1,11 +1,11 @@
 {
-    "name": "mashinno_glasuvane",
-    "short_name": "mashinno_glasuvane",
+    "name": "Машинно гласуване - симулатор",
+    "short_name": "Машинно гласуване",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
+    "description": "Тук може да изпробвате как работи машината за гласуване.",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [
