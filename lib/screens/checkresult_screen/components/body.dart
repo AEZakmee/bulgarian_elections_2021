@@ -55,16 +55,21 @@ class Body extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       if (Provider.of<Data>(context).selectedParty != null)
-                        Text(
-                          '${Provider.of<Data>(context).selectedParty.number}. ${Provider.of<Data>(context).selectedParty.name}',
-                          style: TextStyle(
-                            fontWeight: FontWeight.w700,
-                            fontSize: getProportionateScreenWidth(16),
+                        Padding(
+                          padding: EdgeInsets.symmetric(
+                            horizontal: getProportionateScreenWidth(2),
                           ),
-                          textAlign: TextAlign.center,
+                          child: Text(
+                            '${Provider.of<Data>(context).selectedParty.number}. ${Provider.of<Data>(context).selectedParty.name}',
+                            style: TextStyle(
+                              fontWeight: FontWeight.w700,
+                              fontSize: getProportionateScreenWidth(16),
+                            ),
+                            textAlign: TextAlign.center,
+                          ),
                         ),
                       SizedBox(
-                        height: getProportionateScreenHeight(10),
+                        height: getProportionateScreenHeight(5),
                       ),
                       if (Provider.of<Data>(context).selectedPerson != null)
                         Text(

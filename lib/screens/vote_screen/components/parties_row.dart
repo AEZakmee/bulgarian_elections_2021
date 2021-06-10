@@ -65,14 +65,17 @@ class PartyRow extends StatelessWidget {
             padding: EdgeInsets.only(
               left: getProportionateScreenWidth(5),
             ),
-            child: Text(
-              party.name,
-              style: TextStyle(
-                color: (!isSelectedParty) ? kDefaultColor : Colors.white,
-                fontSize: getProportionateScreenWidth(10),
-                fontWeight: FontWeight.w700,
+            child: Container(
+              width: getProportionateScreenWidth(180),
+              child: Text(
+                party.name,
+                style: TextStyle(
+                  color: (!isSelectedParty) ? kDefaultColor : Colors.white,
+                  fontSize: getProportionateScreenWidth(10),
+                  fontWeight: FontWeight.w700,
+                ),
+                maxLines: 2,
               ),
-              maxLines: 1,
             ),
           ),
         ],
