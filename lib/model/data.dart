@@ -9,6 +9,14 @@ class Data extends ChangeNotifier {
     notifyListeners();
   }
 
+  int _numberPeople;
+  int get numberPeople => _numberPeople;
+  void setPeopleNumber(int number) {
+    _numberPeople = number;
+    print('people loaded, total of $_numberPeople');
+    notifyListeners();
+  }
+
   List<PoliticalParty> _partiesSubList = [];
   List<PoliticalParty> get partiesSubList => _partiesSubList;
   int _currentPage = 0;

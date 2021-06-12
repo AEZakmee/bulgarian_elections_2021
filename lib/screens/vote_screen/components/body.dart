@@ -129,7 +129,7 @@ class _BodyState extends State<Body> {
                                 spacing: getProportionateScreenWidth(4),
                                 children: [
                                   ...List.generate(
-                                    18,
+                                    data.numberPeople,
                                     (index) => Padding(
                                       padding: EdgeInsets.symmetric(
                                         //horizontal: getProportionateScreenWidth(2),

@@ -23,6 +23,8 @@ class _HomeWindowState extends State<HomeWindow> {
     data['parties'].forEach((v) {
       parties.add(PoliticalParty.fromJson(v));
     });
+    Provider.of<Data>(context, listen: false)
+        .setPeopleNumber(data['peopleNumber']);
     Provider.of<Data>(context, listen: false).loadParties(parties);
     // parties.forEach((element) {
     //   print(element.name);
