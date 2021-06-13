@@ -52,12 +52,12 @@ class Body extends StatelessWidget {
                     flex: 1,
                   ),
                   Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       if (Provider.of<Data>(context).selectedParty != null)
                         Padding(
                           padding: EdgeInsets.symmetric(
-                            horizontal: getProportionateScreenWidth(2),
+                            horizontal: getProportionateScreenWidth(4),
                           ),
                           child: Text(
                             '${Provider.of<Data>(context).selectedParty.number}. ${Provider.of<Data>(context).selectedParty.name}',
@@ -73,11 +73,13 @@ class Body extends StatelessWidget {
                       ),
                       if (Provider.of<Data>(context).selectedPerson != null)
                         Text(
-                          '    ${Provider.of<Data>(context).selectedPerson.number}. ${Provider.of<Data>(context).selectedPerson.name}',
+                          '${Provider.of<Data>(context).selectedPerson.number}. ${Provider.of<Data>(context).selectedPerson.name}',
                           style: TextStyle(
                             fontWeight: FontWeight.w500,
                             fontSize: getProportionateScreenWidth(13),
                           ),
+                          maxLines: 2,
+                          textAlign: TextAlign.center,
                         ),
                     ],
                   ),

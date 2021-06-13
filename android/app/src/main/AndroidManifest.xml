@@ -1,7 +1,13 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="kris.projects.mashinno_glasuvane">
+    <queries>
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <data android:scheme="https" />
+        </intent>
+    </queries>
    <application
-        android:label="mashinno_glasuvane"
+        android:label="Симулатор"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
