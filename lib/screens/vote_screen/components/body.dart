@@ -133,8 +133,9 @@ class _BodyState extends State<Body> {
                                     (index) => Padding(
                                       padding: EdgeInsets.symmetric(
                                         //horizontal: getProportionateScreenWidth(2),
-                                        vertical:
-                                            getProportionateScreenHeight(8),
+                                        vertical: data.numberPeople <= 27
+                                            ? getProportionateScreenHeight(8)
+                                            : getProportionateScreenHeight(5.5),
                                       ),
                                       child: PreferenceBox(
                                         number: index,
