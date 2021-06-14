@@ -53,7 +53,7 @@ class _BodyState extends State<Body> {
                 fontWeight: FontWeight.bold,
               ),
               textAlign: TextAlign.center,
-              maxLines: 4,
+              maxLines: 3,
             ),
             Spacer(),
             DefaultButton(
@@ -67,13 +67,13 @@ class _BodyState extends State<Body> {
               verticalSize: getProportionateScreenHeight(100),
             ),
             Spacer(),
-            // Text(
-            //   "Системата е създадена изцяло с идеята, да покаже на хората процеса при машинно гласуване.\nСистемата НЯМА за цел, да агитира или подкрепя дадена политическа партия.\nСистемата НЯМА НИЩО ОБЩО с изборите и централната избирателна комисия",
-            //   style: TextStyle(
-            //       fontSize: getProportionateScreenWidth(12),
-            //       color: Colors.grey),
-            //   textAlign: TextAlign.left,
-            // ),
+            Text(
+              "Системата е създадена изцяло с идеята, да покаже на хората процеса при машинно гласуване.\nСистемата НЯМА за цел, да агитира или подкрепя дадена политическа партия.\nСистемата НЯМА НИЩО ОБЩО с изборите и централната избирателна комисия",
+              style: TextStyle(
+                  fontSize: getProportionateScreenWidth(12),
+                  color: Colors.grey),
+              textAlign: TextAlign.left,
+            ),
             SizedBox(
               height: getProportionateScreenHeight(40),
             ),

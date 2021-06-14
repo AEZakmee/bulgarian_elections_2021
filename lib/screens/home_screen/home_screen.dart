@@ -17,7 +17,7 @@ class HomeWindow extends StatefulWidget {
 
 class _HomeWindowState extends State<HomeWindow> {
   void _loadData() async {
-    final String response = await rootBundle.loadString('assets/data_pz.json');
+    final String response = await rootBundle.loadString('assets/data_29.json');
     final data = await json.decode(response);
     List<PoliticalParty> parties = [];
     data['parties'].forEach((v) {
