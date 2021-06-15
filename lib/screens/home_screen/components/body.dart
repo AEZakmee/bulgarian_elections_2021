@@ -12,28 +12,28 @@ class Body extends StatefulWidget {
 }
 
 class _BodyState extends State<Body> {
-  _launchURL() async {
-    const url = 'https://www.linkedin.com/in/kristiyan-t99';
-    if (await canLaunch(url)) {
-      await launch(
-        url,
-        forceSafariVC: true,
-        forceWebView: true,
-        webOnlyWindowName: '_blank',
-      );
-    } else {
-      throw 'Could not launch $url';
-    }
-  }
+  // _launchURL() async {
+  //   const url = 'https://www.linkedin.com/in/kristiyan-t99';
+  //   if (await canLaunch(url)) {
+  //     await launch(
+  //       url,
+  //       forceSafariVC: true,
+  //       forceWebView: true,
+  //       webOnlyWindowName: '_blank',
+  //     );
+  //   } else {
+  //     throw 'Could not launch $url';
+  //   }
+  // }
 
-  _launchURLAndroid() async {
-    const url = 'https://linkedin.com/in/kristiyan-t99';
-    if (await canLaunch(url)) {
-      await launch(url);
-    } else {
-      throw 'Could not launch $url';
-    }
-  }
+  // _launchURLAndroid() async {
+  //   const url = 'https://linkedin.com/in/kristiyan-t99';
+  //   if (await canLaunch(url)) {
+  //     await launch(url);
+  //   } else {
+  //     throw 'Could not launch $url';
+  //   }
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -68,44 +68,45 @@ class _BodyState extends State<Body> {
             ),
             Spacer(),
             Text(
-              "Системата е създадена изцяло с идеята, да покаже на хората процеса при машинно гласуване.\nСистемата НЯМА за цел, да агитира или подкрепя дадена политическа партия.\nСистемата НЯМА НИЩО ОБЩО с изборите и централната избирателна комисия",
+              "Системата е създадена изцяло с идеята да покаже на хората процеса при машинно гласуване.\nСистемата НЯМА за цел да агитира или подкрепя дадена политическа партия.\nСистемата НЯМА НИЩО ОБЩО с изборите и Централната избирателна комисия",
               style: TextStyle(
                   fontSize: getProportionateScreenWidth(12),
                   color: Colors.grey),
               textAlign: TextAlign.left,
             ),
             SizedBox(
-              height: getProportionateScreenHeight(40),
+              height: getProportionateScreenHeight(50),
+              width: double.infinity,
             ),
-            Row(
-              children: [
-                Spacer(),
-                Padding(
-                  padding: EdgeInsets.only(
-                    right: getProportionateScreenWidth(5),
-                  ),
-                  child: InkWell(
-                    onTap: _launchURLAndroid,
-                    child: RichText(
-                      text: TextSpan(
-                        style: TextStyle(
-                          fontSize: getProportionateScreenWidth(13),
-                          color: Colors.grey,
-                          fontWeight: FontWeight.w700,
-                        ),
-                        children: [
-                          TextSpan(text: 'Created by '),
-                          TextSpan(
-                            text: 'Kristiyan Tsankov',
-                            style: TextStyle(color: Colors.blue),
-                          )
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            ),
+            // Row(
+            //   children: [
+            //     Spacer(),
+            //     Padding(
+            //       padding: EdgeInsets.only(
+            //         right: getProportionateScreenWidth(5),
+            //       ),
+            //       child: InkWell(
+            //         onTap: _launchURLAndroid,
+            //         child: RichText(
+            //           text: TextSpan(
+            //             style: TextStyle(
+            //               fontSize: getProportionateScreenWidth(13),
+            //               color: Colors.grey,
+            //               fontWeight: FontWeight.w700,
+            //             ),
+            //             children: [
+            //               TextSpan(text: 'Created by '),
+            //               TextSpan(
+            //                 text: 'Kristiyan Tsankov',
+            //                 style: TextStyle(color: Colors.blue),
+            //               )
+            //             ],
+            //           ),
+            //         ),
+            //       ),
+            //     ),
+            //   ],
+            // ),
             SizedBox(
               height: getProportionateScreenHeight(10),
             ),

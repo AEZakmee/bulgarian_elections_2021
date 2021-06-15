@@ -9,11 +9,11 @@ class Data extends ChangeNotifier {
     notifyListeners();
   }
 
-  int _numberPeople;
+  int _numberPeople = 0;
   int get numberPeople => _numberPeople;
   void setPeopleNumber(int number) {
     _numberPeople = number;
-    print('people loaded, total of $_numberPeople');
+    //print('people loaded, total of $_numberPeople');
     notifyListeners();
   }
 

@@ -66,7 +66,7 @@ class PartyRow extends StatelessWidget {
               left: getProportionateScreenWidth(5),
             ),
             child: Container(
-              width: getProportionateScreenWidth(180),
+              width: getProportionateScreenWidth(165),
               child: Text(
                 party.name,
                 style: TextStyle(
