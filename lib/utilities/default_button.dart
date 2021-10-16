@@ -30,13 +30,16 @@ class DefaultButton extends StatelessWidget {
         elevation: 5,
         borderRadius: BorderRadius.circular(getProportionateScreenHeight(10)),
         child: MaterialButton(
-          child: Text(
-            text,
-            style: TextStyle(
-              color: textColor,
-              fontSize: verticalSize / 2 - getProportionateScreenWidth(3),
+          child: FittedBox(
+            fit: BoxFit.scaleDown,
+            child: Text(
+              text,
+              style: TextStyle(
+                color: textColor,
+                fontSize: verticalSize / 2 - getProportionateScreenWidth(3),
+              ),
+              maxLines: 1,
             ),
-            maxLines: 1,
           ),
           onPressed: onPress,
         ),

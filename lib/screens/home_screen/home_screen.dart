@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:mashinno_glasuvane/model/data.dart';
 import 'package:mashinno_glasuvane/model/political_party.dart';
+import 'package:mashinno_glasuvane/model/president.dart';
 import 'package:provider/provider.dart';
 
 import '../../size_config.dart';
@@ -27,6 +28,15 @@ class _HomeWindowState extends State<HomeWindow> {
     Provider.of<Data>(context, listen: false)
         .setPeopleNumber(data['peopleNumber']);
     Provider.of<Data>(context, listen: false).loadParties(parties);
+
+    final String presidentsResponse =
+        await rootBundle.loadString('assets/presidents.json');
+    final presidentsData = await json.decode(presidentsResponse);
+    List<President> presidents = [];
+    presidentsData['presidents'].forEach((v) {
+      presidents.add(President.fromJson(v));
+    });
+    Provider.of<Data>(context, listen: false).loadPresidents(presidents);
     // parties.forEach((element) {
     //   print(element.name);
     //   print(element.people.map((el) => el.name).join(' '));

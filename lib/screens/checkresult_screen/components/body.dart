@@ -1,6 +1,8 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mashinno_glasuvane/constants.dart';
 import 'package:mashinno_glasuvane/model/data.dart';
+import 'package:mashinno_glasuvane/screens/president_vote/president_vote_screen.dart';
 import 'package:mashinno_glasuvane/screens/vote_screen/vote_screen.dart';
 import 'package:mashinno_glasuvane/screens/vote_success/vote_success.dart';
 import 'package:mashinno_glasuvane/size_config.dart';
@@ -11,100 +13,209 @@ class Body extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
+    SizeConfig().init(context);
     return Center(
       child: Container(
-        height: SizeConfig.screenHeight,
-        width: SizeConfig.screenWidth,
+        width: SizeConfig.screenWidth - getProportionateScreenWidth(10),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SizedBox(
+                  height: getProportionateScreenHeight(20),
+                  width: double.infinity,
+                ),
+                Text(
+                  "Избори 14.11.2021",
+                  style: TextStyle(
+                    fontSize: getProportionateScreenWidth(16),
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+                SizedBox(
+                  height: getProportionateScreenHeight(20),
+                ),
+                Text(
+                  "Преглед на избора",
+                  style: TextStyle(
+                    fontSize: getProportionateScreenWidth(20),
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                SizedBox(
+                  height: getProportionateScreenHeight(15),
+                ),
+                Text(
+                  "Прегледайте избора си.",
+                  style: TextStyle(
+                    fontSize: getProportionateScreenWidth(13),
+                  ),
+                ),
+                SizedBox(
+                  height: getProportionateScreenHeight(5),
+                ),
+                RichText(
+                  text: TextSpan(
+                    style: TextStyle(
+                        fontSize: getProportionateScreenWidth(13),
+                        color: kDefaultColor),
+                    children: <TextSpan>[
+                      TextSpan(text: 'Може да го промените, като натиснете '),
+                      TextSpan(
+                          text: '"Промени избора".',
+                          style: TextStyle(fontWeight: FontWeight.bold)),
+                    ],
+                  ),
+                ),
+                SizedBox(
+                  height: getProportionateScreenHeight(5),
+                ),
+                RichText(
+                  text: TextSpan(
+                    style: TextStyle(
+                      color: kDefaultColor,
+                      fontSize: getProportionateScreenWidth(13),
+                    ),
+                    children: <TextSpan>[
+                      TextSpan(text: 'Натиснете '),
+                      TextSpan(
+                          text: '"Гласувайте" ',
+                          style: TextStyle(fontWeight: FontWeight.bold)),
+                      TextSpan(text: 'и изчакайте разписка.'),
+                    ],
+                  ),
+                ),
+              ],
+            ),
             Spacer(),
             Container(
-              height: getProportionateScreenHeight(200),
-              width: getProportionateScreenWidth(250),
+              width: getProportionateScreenWidth(320),
               decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(5),
                 border: Border.all(
                   color: kDefaultColor,
-                  width: getProportionateScreenWidth(2),
+                  width: getProportionateScreenWidth(1),
                 ),
               ),
-              child: Column(
-                children: [
-                  Spacer(
-                    flex: 1,
-                  ),
-                  Text(
-                    'Вашият избор',
-                    style: TextStyle(
-                      fontSize: getProportionateScreenWidth(15),
-                      fontWeight: FontWeight.bold,
+              child: Padding(
+                padding: EdgeInsets.all(
+                  getProportionateScreenWidth(10),
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Text(
+                      'Избори за президент и вицепрезидент',
+                      style: TextStyle(
+                        fontSize: getProportionateScreenWidth(15),
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.symmetric(
-                      horizontal: getProportionateScreenWidth(10),
+                    SizedBox(
+                      height: getProportionateScreenHeight(10),
                     ),
-                    child: Divider(
-                      thickness: getProportionateScreenHeight(1),
-                      color: kDefaultColor,
+                    Text(
+                      Provider.of<Data>(context).selectedPresident == null
+                          ? 'Не подкрепям никого'
+                          : '${Provider.of<Data>(context).selectedPresident.number}. ${Provider.of<Data>(context).selectedPresident.name}',
+                      style: TextStyle(
+                        fontWeight: FontWeight.w500,
+                        fontSize: getProportionateScreenWidth(15),
+                      ),
+                      textAlign: TextAlign.center,
                     ),
-                  ),
-                  Spacer(
-                    flex: 1,
-                  ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      if (Provider.of<Data>(context).selectedParty != null)
-                        Padding(
-                          padding: EdgeInsets.symmetric(
-                            horizontal: getProportionateScreenWidth(4),
-                          ),
-                          child: Text(
-                            '${Provider.of<Data>(context).selectedParty.number}. ${Provider.of<Data>(context).selectedParty.name}',
-                            style: TextStyle(
-                              fontWeight: FontWeight.w700,
-                              fontSize: getProportionateScreenWidth(16),
-                            ),
-                            textAlign: TextAlign.center,
-                          ),
-                        ),
+                    if (Provider.of<Data>(context).selectedPresident != null)
                       SizedBox(
                         height: getProportionateScreenHeight(5),
                       ),
-                      if (Provider.of<Data>(context).selectedPerson != null)
-                        Text(
-                          '${Provider.of<Data>(context).selectedPerson.number}. ${Provider.of<Data>(context).selectedPerson.name}',
-                          style: TextStyle(
-                            fontWeight: FontWeight.w500,
-                            fontSize: getProportionateScreenWidth(13),
-                          ),
-                          maxLines: 2,
-                          textAlign: TextAlign.center,
+                    if (Provider.of<Data>(context).selectedPresident != null)
+                      Text(
+                        '${Provider.of<Data>(context).selectedPresident.presidentName}\n ${Provider.of<Data>(context).selectedPresident.vicePresidentName}',
+                        style: TextStyle(
+                          fontWeight: FontWeight.w500,
+                          fontSize: getProportionateScreenWidth(13),
                         ),
-                    ],
-                  ),
-                  Spacer(
-                    flex: 2,
-                  ),
-                ],
+                        maxLines: 2,
+                        textAlign: TextAlign.center,
+                      ),
+                    SizedBox(
+                      height: getProportionateScreenHeight(20),
+                    ),
+                    Text(
+                      'Избори за народни представители',
+                      style: TextStyle(
+                        fontSize: getProportionateScreenWidth(15),
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    SizedBox(
+                      height: getProportionateScreenHeight(10),
+                    ),
+                    Text(
+                      Provider.of<Data>(context).selectedParty == null
+                          ? 'Не подкрепям никого'
+                          : '${Provider.of<Data>(context).selectedParty.number}. ${Provider.of<Data>(context).selectedParty.name}',
+                      style: TextStyle(
+                        fontWeight: FontWeight.w500,
+                        fontSize: getProportionateScreenWidth(15),
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                    if (Provider.of<Data>(context).selectedParty != null)
+                      SizedBox(
+                        height: getProportionateScreenHeight(5),
+                      ),
+                    if (Provider.of<Data>(context).selectedPerson != null)
+                      Text(
+                        '${Provider.of<Data>(context).selectedPerson.number}. ${Provider.of<Data>(context).selectedPerson.name}',
+                        style: TextStyle(
+                          fontWeight: FontWeight.w500,
+                          fontSize: getProportionateScreenWidth(13),
+                        ),
+                        maxLines: 2,
+                        textAlign: TextAlign.center,
+                      ),
+                    SizedBox(
+                      height: getProportionateScreenHeight(10),
+                    ),
+                  ],
+                ),
               ),
             ),
-            SizedBox(
-              height: getProportionateScreenHeight(10),
-            ),
-            DefaultButton(
-              text: 'Промени избор',
-              onPress: () {
-                Navigator.pushReplacement(
-                  context,
-                  PageRouteBuilder(
-                    pageBuilder: (_, __, ___) => VoteScreen(),
-                    transitionDuration: Duration(seconds: 0),
-                  ),
-                );
-              },
-              size: getProportionateScreenWidth(250),
-              verticalSize: getProportionateScreenHeight(50),
+            Padding(
+              padding: EdgeInsets.symmetric(
+                  horizontal: getProportionateScreenWidth(10),
+                  vertical: getProportionateScreenHeight(10)),
+              child: DefaultButton(
+                text: "Промени избора",
+                onPress: () {
+                  if (Provider.of<Data>(context, listen: false)
+                          .selectedVoteType ==
+                      2) {
+                    Navigator.pushReplacement(
+                      context,
+                      PageRouteBuilder(
+                        pageBuilder: (_, __, ___) => VoteScreen(),
+                        transitionDuration: Duration(seconds: 0),
+                      ),
+                    );
+                  } else {
+                    Navigator.pushReplacement(
+                      context,
+                      PageRouteBuilder(
+                        pageBuilder: (_, __, ___) => PresidentScreen(),
+                        transitionDuration: Duration(seconds: 0),
+                      ),
+                    );
+                  }
+                },
+                verticalSize: getProportionateScreenHeight(45),
+                size: getProportionateScreenWidth(320),
+              ),
             ),
             Spacer(),
             Row(
@@ -119,16 +230,23 @@ class Body extends StatelessWidget {
                     text: 'Гласуване',
                     onPress: () {
                       Provider.of<Data>(context, listen: false).clearVote();
-                      Provider.of<Data>(context, listen: false).firstPage();
-                      Navigator.popAndPushNamed(
-                          context, VoteSuccessWindow.routeName);
+                      Navigator.pushReplacement(
+                        context,
+                        PageRouteBuilder(
+                          pageBuilder: (_, __, ___) => VoteSuccessWindow(),
+                          transitionDuration: Duration(seconds: 0),
+                        ),
+                      );
                     },
                     verticalSize: getProportionateScreenHeight(50),
                     size: getProportionateScreenWidth(160),
                   ),
                 ),
               ],
-            )
+            ),
+            SizedBox(
+              height: getProportionateScreenHeight(20),
+            ),
           ],
         ),
       ),

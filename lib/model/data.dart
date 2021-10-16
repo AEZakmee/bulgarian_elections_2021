@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mashinno_glasuvane/model/political_party.dart';
+import 'package:mashinno_glasuvane/model/president.dart';
 
 class Data extends ChangeNotifier {
   List<PoliticalParty> _parties = [];
@@ -36,7 +37,7 @@ class Data extends ChangeNotifier {
     }
   }
 
-  void firstPage() {
+  void _firstPage() {
     _currentPage = 0;
     _loadNewList();
     notifyListeners();
@@ -65,9 +66,76 @@ class Data extends ChangeNotifier {
     }
   }
 
+  List<String> buttonTypes = [
+    "ИЗБОРИ ЗА ПРЕЗИДЕНТ И ВИЗЕПРЕЗИДЕНТ И ЗА НАРОДНИ ПРЕДСТАВИТЕЛИ",
+    "ИЗБОРИ ЗА ПРЕЗИДЕНТ И ВИЗЕПРЕЗИДЕНТ",
+    "ИЗБОРИ ЗА НАРОДНИ ПРЕДСТАВИТЕЛИ",
+  ];
+  get selectedButtonText => buttonTypes[_selectedVoteType] ?? '';
+  int _selectedVoteType = -1;
+  get selectedVoteType => _selectedVoteType;
+  set selectedVoteType(data) {
+    if (_selectedVoteType == data) {
+      _selectedVoteType = -1;
+    } else {
+      _selectedVoteType = data;
+    }
+    notifyListeners();
+  }
+
+  List<President> _presidents = [];
+  void loadPresidents(List<President> data) {
+    _presidents = data;
+    _loadNewListPresident();
+    notifyListeners();
+  }
+
+  List<President> _presidentsSubList = [];
+  List<President> get presidentsSubList => _presidentsSubList;
+  int _currentPagePresident = 0;
+  void nextPagePresident() {
+    if (_currentPagePresident < _presidents.length ~/ 13) {
+      _currentPagePresident++;
+      _loadNewListPresident();
+      notifyListeners();
+    }
+  }
+
+  void prevPagePresident() {
+    if (_currentPagePresident > 0) {
+      _currentPagePresident--;
+      _loadNewListPresident();
+      notifyListeners();
+    }
+  }
+
+  void _firstPagePresident() {
+    _currentPagePresident = 0;
+    _loadNewListPresident();
+    notifyListeners();
+  }
+
+  void _loadNewListPresident() {
+    _presidentsSubList = _presidents.sublist(
+        _currentPagePresident * 13,
+        _currentPagePresident * 13 + 13 > _presidents.length
+            ? _presidents.length
+            : _currentPagePresident * 13 + 13);
+  }
+
+  President selectedPresident;
+  void selectPresident(int index) {
+    selectedPresident = _presidentsSubList[index];
+    notifyListeners();
+  }
+
   void clearVote() {
     selectedPerson = null;
     selectedParty = null;
+    selectedPresident = null;
+    _selectedVoteType = -1;
+    _firstPage();
+    _firstPagePresident();
     notifyListeners();
   }
 }

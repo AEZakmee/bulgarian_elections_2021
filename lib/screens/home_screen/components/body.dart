@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mashinno_glasuvane/model/data.dart';
 import 'package:mashinno_glasuvane/screens/vote_screen/vote_screen.dart';
+import 'package:mashinno_glasuvane/screens/vote_type_screen/vote_type_screen.dart';
 import 'package:mashinno_glasuvane/size_config.dart';
 import 'package:mashinno_glasuvane/utilities/default_button.dart';
 import 'package:provider/provider.dart';
@@ -47,7 +48,7 @@ class _BodyState extends State<Body> {
               height: getProportionateScreenHeight(30),
             ),
             Text(
-              "Парламентарни избори\nСимулатор",
+              "Избори 14.10.2021\nСимулатор",
               style: TextStyle(
                 fontSize: getProportionateScreenWidth(30),
                 fontWeight: FontWeight.bold,
@@ -57,16 +58,19 @@ class _BodyState extends State<Body> {
             ),
             Spacer(),
             DefaultButton(
-              text: 'Гласувай',
+              text: 'Изпробвай Симулатор',
               onPress: () {
                 Provider.of<Data>(context, listen: false).clearVote();
-                Provider.of<Data>(context, listen: false).firstPage();
-                Navigator.pushNamed(context, VoteScreen.routeName);
+                Navigator.pushNamed(context, VoteTypeScreen.routeName);
               },
               size: getProportionateScreenWidth(300),
               verticalSize: getProportionateScreenHeight(100),
             ),
             Spacer(),
+            SizedBox(
+              height: getProportionateScreenHeight(30),
+              width: double.infinity,
+            ),
             Text(
               "Системата е създадена изцяло с идеята да покаже на хората процеса при машинно гласуване.\nСистемата НЯМА за цел да агитира или подкрепя дадена политическа партия.\nСистемата НЯМА НИЩО ОБЩО с изборите и Централната избирателна комисия",
               style: TextStyle(
@@ -75,7 +79,7 @@ class _BodyState extends State<Body> {
               textAlign: TextAlign.left,
             ),
             SizedBox(
-              height: getProportionateScreenHeight(50),
+              height: getProportionateScreenHeight(10),
               width: double.infinity,
             ),
             // Row(
@@ -107,9 +111,9 @@ class _BodyState extends State<Body> {
             //     ),
             //   ],
             // ),
-            SizedBox(
-              height: getProportionateScreenHeight(10),
-            ),
+            // SizedBox(
+            //   height: getProportionateScreenHeight(10),
+            // ),
           ],
         ),
       ),

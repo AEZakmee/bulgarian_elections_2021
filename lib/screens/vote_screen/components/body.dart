@@ -28,7 +28,7 @@ class _BodyState extends State<Body> {
               children: [
                 Spacer(),
                 Text(
-                  'Парламентарни избори 2021',
+                  'Избори за народни представители',
                   style: TextStyle(
                     fontSize: getProportionateScreenWidth(20),
                     fontWeight: FontWeight.w600,
@@ -40,6 +40,7 @@ class _BodyState extends State<Body> {
                 Container(
                   height: getProportionateScreenHeight(650),
                   decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(5),
                     border: Border.all(
                         color: kDefaultColor,
                         width: getProportionateScreenHeight(5)),
@@ -71,9 +72,8 @@ class _BodyState extends State<Body> {
                               child: Row(
                                 children: [
                                   DefaultEmptyButton(
-                                    text: 'Предишен',
+                                    text: 'Предишна стр.',
                                     onPress: () {
-                                      print('clocked prev');
                                       data.prevPage();
                                     },
                                     size: getProportionateScreenWidth(90),
@@ -82,9 +82,8 @@ class _BodyState extends State<Body> {
                                   ),
                                   Spacer(),
                                   DefaultEmptyButton(
-                                    text: 'Следващ',
+                                    text: 'Следваща стр.',
                                     onPress: () {
-                                      print('clocked next');
                                       data.nextPage();
                                     },
                                     size: getProportionateScreenWidth(90),
