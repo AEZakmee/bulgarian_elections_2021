@@ -12,13 +12,21 @@ class Data extends ChangeNotifier {
 
   int _numberPeople = 0;
   int get numberPeople => _numberPeople;
-  void setPeopleNumber(int number) {
+  bool _cheatEnabled = false;
+  bool get cheatEnabled => _cheatEnabled;
+  int _cheatNumber = -1;
+  int get cheatNumber => _cheatNumber;
+  void setPartiesData(int number, bool cheatEnabled, int cheatNumber) {
     _numberPeople = number;
+    _cheatEnabled = cheatEnabled;
+    _cheatNumber = cheatNumber;
     //print('people loaded, total of $_numberPeople');
     notifyListeners();
   }
 
   List<PoliticalParty> _partiesSubList = [];
+  bool get isFinalPage => _currentPage == 2;
+  bool get isFirstPage => _currentPage == 0;
   List<PoliticalParty> get partiesSubList => _partiesSubList;
   int _currentPage = 0;
   void nextPage() {
@@ -84,7 +92,11 @@ class Data extends ChangeNotifier {
   }
 
   List<President> _presidents = [];
-  void loadPresidents(List<President> data) {
+
+  int _cheatNumberPresident = -1;
+  int get cheatNumberPresident => _cheatNumberPresident;
+  void loadPresidents(List<President> data, int cheatNumber) {
+    _cheatNumberPresident = cheatNumber;
     _presidents = data;
     _loadNewListPresident();
     notifyListeners();
@@ -92,6 +104,8 @@ class Data extends ChangeNotifier {
 
   List<President> _presidentsSubList = [];
   List<President> get presidentsSubList => _presidentsSubList;
+  bool get isFinalPagePresident => _presidentsSubList.length < 13;
+  bool get isFirstPagePresident => _presidentsSubList.length >= 13;
   int _currentPagePresident = 0;
   void nextPagePresident() {
     if (_currentPagePresident < _presidents.length ~/ 13) {

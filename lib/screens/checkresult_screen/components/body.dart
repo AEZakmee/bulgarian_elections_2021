@@ -108,80 +108,84 @@ class Body extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    Text(
-                      'Избори за президент и вицепрезидент',
-                      style: TextStyle(
-                        fontSize: getProportionateScreenWidth(15),
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    SizedBox(
-                      height: getProportionateScreenHeight(10),
-                    ),
-                    Text(
-                      Provider.of<Data>(context).selectedPresident == null
-                          ? 'Не подкрепям никого'
-                          : '${Provider.of<Data>(context).selectedPresident.number}. ${Provider.of<Data>(context).selectedPresident.name}',
-                      style: TextStyle(
-                        fontWeight: FontWeight.w500,
-                        fontSize: getProportionateScreenWidth(15),
-                      ),
-                      textAlign: TextAlign.center,
-                    ),
                     if (Provider.of<Data>(context).selectedPresident != null)
-                      SizedBox(
-                        height: getProportionateScreenHeight(5),
+                      Column(
+                        children: [
+                          Text(
+                            'Избори за президент и вицепрезидент',
+                            style: TextStyle(
+                              fontSize: getProportionateScreenWidth(15),
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          SizedBox(
+                            height: getProportionateScreenHeight(10),
+                          ),
+                          Text(
+                            '${Provider.of<Data>(context).selectedPresident.number}. ${Provider.of<Data>(context).selectedPresident.name}',
+                            style: TextStyle(
+                              fontWeight: FontWeight.w500,
+                              fontSize: getProportionateScreenWidth(15),
+                            ),
+                            textAlign: TextAlign.center,
+                          ),
+                          SizedBox(
+                            height: getProportionateScreenHeight(5),
+                          ),
+                          Text(
+                            '${Provider.of<Data>(context).selectedPresident.presidentName}\n ${Provider.of<Data>(context).selectedPresident.vicePresidentName}',
+                            style: TextStyle(
+                              fontWeight: FontWeight.w500,
+                              fontSize: getProportionateScreenWidth(13),
+                            ),
+                            maxLines: 2,
+                            textAlign: TextAlign.center,
+                          ),
+                          SizedBox(
+                            height: getProportionateScreenHeight(10),
+                          ),
+                        ],
                       ),
-                    if (Provider.of<Data>(context).selectedPresident != null)
-                      Text(
-                        '${Provider.of<Data>(context).selectedPresident.presidentName}\n ${Provider.of<Data>(context).selectedPresident.vicePresidentName}',
-                        style: TextStyle(
-                          fontWeight: FontWeight.w500,
-                          fontSize: getProportionateScreenWidth(13),
-                        ),
-                        maxLines: 2,
-                        textAlign: TextAlign.center,
-                      ),
-                    SizedBox(
-                      height: getProportionateScreenHeight(20),
-                    ),
-                    Text(
-                      'Избори за народни представители',
-                      style: TextStyle(
-                        fontSize: getProportionateScreenWidth(15),
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    SizedBox(
-                      height: getProportionateScreenHeight(10),
-                    ),
-                    Text(
-                      Provider.of<Data>(context).selectedParty == null
-                          ? 'Не подкрепям никого'
-                          : '${Provider.of<Data>(context).selectedParty.number}. ${Provider.of<Data>(context).selectedParty.name}',
-                      style: TextStyle(
-                        fontWeight: FontWeight.w500,
-                        fontSize: getProportionateScreenWidth(15),
-                      ),
-                      textAlign: TextAlign.center,
-                    ),
                     if (Provider.of<Data>(context).selectedParty != null)
-                      SizedBox(
-                        height: getProportionateScreenHeight(5),
+                      Column(
+                        children: [
+                          Text(
+                            'Избори за народни представители',
+                            style: TextStyle(
+                              fontSize: getProportionateScreenWidth(15),
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          SizedBox(
+                            height: getProportionateScreenHeight(10),
+                          ),
+                          Text(
+                            '${Provider.of<Data>(context).selectedParty.number}. ${Provider.of<Data>(context).selectedParty.name}',
+                            style: TextStyle(
+                              fontWeight: FontWeight.w500,
+                              fontSize: getProportionateScreenWidth(15),
+                            ),
+                            textAlign: TextAlign.center,
+                          ),
+                          if (Provider.of<Data>(context).selectedParty != null)
+                            SizedBox(
+                              height: getProportionateScreenHeight(5),
+                            ),
+                          if (Provider.of<Data>(context).selectedPerson != null)
+                            Text(
+                              '${Provider.of<Data>(context).selectedPerson.number}. ${Provider.of<Data>(context).selectedPerson.name}',
+                              style: TextStyle(
+                                fontWeight: FontWeight.w500,
+                                fontSize: getProportionateScreenWidth(13),
+                              ),
+                              maxLines: 2,
+                              textAlign: TextAlign.center,
+                            ),
+                          SizedBox(
+                            height: getProportionateScreenHeight(10),
+                          ),
+                        ],
                       ),
-                    if (Provider.of<Data>(context).selectedPerson != null)
-                      Text(
-                        '${Provider.of<Data>(context).selectedPerson.number}. ${Provider.of<Data>(context).selectedPerson.name}',
-                        style: TextStyle(
-                          fontWeight: FontWeight.w500,
-                          fontSize: getProportionateScreenWidth(13),
-                        ),
-                        maxLines: 2,
-                        textAlign: TextAlign.center,
-                      ),
-                    SizedBox(
-                      height: getProportionateScreenHeight(10),
-                    ),
                   ],
                 ),
               ),

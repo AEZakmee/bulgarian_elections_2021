@@ -48,7 +48,7 @@ class _BodyState extends State<Body> {
               height: getProportionateScreenHeight(30),
             ),
             Text(
-              "Избори 14.10.2021\nСимулатор",
+              "Избори 14.11.2021\nСимулатор",
               style: TextStyle(
                 fontSize: getProportionateScreenWidth(30),
                 fontWeight: FontWeight.bold,
@@ -58,7 +58,7 @@ class _BodyState extends State<Body> {
             ),
             Spacer(),
             DefaultButton(
-              text: 'Изпробвай Симулатор',
+              text: 'Изпробвай',
               onPress: () {
                 Provider.of<Data>(context, listen: false).clearVote();
                 Navigator.pushNamed(context, VoteTypeScreen.routeName);

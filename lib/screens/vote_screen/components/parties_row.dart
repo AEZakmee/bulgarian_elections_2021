@@ -123,9 +123,9 @@ class PresidentsRow extends StatelessWidget {
               style: TextStyle(
                 color: (!isSelected) ? kDefaultColor : Colors.white,
                 fontSize: president.name.length < 21
-                    ? getProportionateScreenWidth(11)
-                    : getProportionateScreenWidth(8),
-                fontWeight: FontWeight.w700,
+                    ? getProportionateScreenHeight(15)
+                    : getProportionateScreenHeight(12),
+                fontWeight: FontWeight.w600,
               ),
               maxLines: 2,
             ),
@@ -175,7 +175,7 @@ class PresidentsRow extends StatelessWidget {
                   overflow: TextOverflow.clip,
                   style: TextStyle(
                     color: (!isSelected) ? kDefaultColor : Colors.white,
-                    fontSize: getProportionateScreenWidth(11),
+                    fontSize: getProportionateScreenHeight(16),
                     fontWeight: FontWeight.w600,
                   ),
                   maxLines: 1,
@@ -185,7 +185,7 @@ class PresidentsRow extends StatelessWidget {
                   overflow: TextOverflow.clip,
                   style: TextStyle(
                     color: (!isSelected) ? kDefaultColor : Colors.white,
-                    fontSize: getProportionateScreenWidth(11),
+                    fontSize: getProportionateScreenHeight(16),
                     fontWeight: FontWeight.w600,
                   ),
                   maxLines: 1,

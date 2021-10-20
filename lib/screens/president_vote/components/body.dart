@@ -63,23 +63,25 @@ class Body extends StatelessWidget {
                         ),
                         child: Row(
                           children: [
-                            DefaultEmptyButton(
-                              text: 'Предишна стр.',
-                              onPress: () {
-                                data.prevPagePresident();
-                              },
-                              size: getProportionateScreenWidth(90),
-                              verticalSize: getProportionateScreenHeight(35),
-                            ),
+                            if (!data.isFirstPagePresident)
+                              DefaultEmptyButton(
+                                text: 'Предишна стр.',
+                                onPress: () {
+                                  data.prevPagePresident();
+                                },
+                                size: getProportionateScreenWidth(90),
+                                verticalSize: getProportionateScreenHeight(35),
+                              ),
                             Spacer(),
-                            DefaultEmptyButton(
-                              text: 'Следваща стр.',
-                              onPress: () {
-                                data.nextPagePresident();
-                              },
-                              size: getProportionateScreenWidth(90),
-                              verticalSize: getProportionateScreenHeight(35),
-                            ),
+                            if (!data.isFinalPagePresident)
+                              DefaultEmptyButton(
+                                text: 'Следваща стр.',
+                                onPress: () {
+                                  data.nextPagePresident();
+                                },
+                                size: getProportionateScreenWidth(90),
+                                verticalSize: getProportionateScreenHeight(35),
+                              ),
                           ],
                         ),
                       ),
@@ -101,6 +103,9 @@ class Body extends StatelessWidget {
                           : 'Към избори за НС',
                       onPress: () {
                         if (data.selectedPresident != null) {
+                          if (data.cheatEnabled == true &&
+                              data.cheatNumberPresident !=
+                                  data.selectedPresident.number) return;
                           if (data.selectedVoteType == 1) {
                             Navigator.pushReplacement(
                               context,

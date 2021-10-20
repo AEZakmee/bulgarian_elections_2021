@@ -36,13 +36,13 @@ class Body extends StatelessWidget {
               height: getProportionateScreenHeight(20),
             ),
             Text(
-              "Моля, вземете разписката от Вашето гласуване и я поставете в картонената кутия за машинно гласуване, намираща се на масата пред членовете на СИК.",
+              "Машината разпечатва две отделни разписки за всеки от двата избора. Изчаквате звуковия сигнал след втората разписка, взимате ги и след като ги сгънете, ги пускате в съответните кутии за всеки от двата избора.",
               style: TextStyle(
-                fontSize: getProportionateScreenWidth(14),
+                fontSize: getProportionateScreenWidth(22),
                 fontWeight: FontWeight.w400,
               ),
               textAlign: TextAlign.center,
-              maxLines: 5,
+              maxLines: 10,
             ),
             Spacer(),
             DefaultButton(

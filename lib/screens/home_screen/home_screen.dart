@@ -18,15 +18,14 @@ class HomeWindow extends StatefulWidget {
 
 class _HomeWindowState extends State<HomeWindow> {
   void _loadData() async {
-    final String response =
-        await rootBundle.loadString('assets/demo_data.json');
+    final String response = await rootBundle.loadString('assets/data_1.json');
     final data = await json.decode(response);
     List<PoliticalParty> parties = [];
     data['parties'].forEach((v) {
       parties.add(PoliticalParty.fromJson(v));
     });
-    Provider.of<Data>(context, listen: false)
-        .setPeopleNumber(data['peopleNumber']);
+    Provider.of<Data>(context, listen: false).setPartiesData(
+        data['peopleNumber'], data['cheatEnabled'], data['cheatNumber']);
     Provider.of<Data>(context, listen: false).loadParties(parties);
 
     final String presidentsResponse =
@@ -36,7 +35,8 @@ class _HomeWindowState extends State<HomeWindow> {
     presidentsData['presidents'].forEach((v) {
       presidents.add(President.fromJson(v));
     });
-    Provider.of<Data>(context, listen: false).loadPresidents(presidents);
+    Provider.of<Data>(context, listen: false)
+        .loadPresidents(presidents, presidentsData['cheatNumber']);
     // parties.forEach((element) {
     //   print(element.name);
     //   print(element.people.map((el) => el.name).join(' '));

@@ -71,25 +71,27 @@ class _BodyState extends State<Body> {
                               ),
                               child: Row(
                                 children: [
-                                  DefaultEmptyButton(
-                                    text: 'Предишна стр.',
-                                    onPress: () {
-                                      data.prevPage();
-                                    },
-                                    size: getProportionateScreenWidth(90),
-                                    verticalSize:
-                                        getProportionateScreenHeight(35),
-                                  ),
+                                  if (!data.isFirstPage)
+                                    DefaultEmptyButton(
+                                      text: 'Предишна стр.',
+                                      onPress: () {
+                                        data.prevPage();
+                                      },
+                                      size: getProportionateScreenWidth(85),
+                                      verticalSize:
+                                          getProportionateScreenHeight(32),
+                                    ),
                                   Spacer(),
-                                  DefaultEmptyButton(
-                                    text: 'Следваща стр.',
-                                    onPress: () {
-                                      data.nextPage();
-                                    },
-                                    size: getProportionateScreenWidth(90),
-                                    verticalSize:
-                                        getProportionateScreenHeight(35),
-                                  ),
+                                  if (!data.isFinalPage)
+                                    DefaultEmptyButton(
+                                      text: 'Следваща стр.',
+                                      onPress: () {
+                                        data.nextPage();
+                                      },
+                                      size: getProportionateScreenWidth(85),
+                                      verticalSize:
+                                          getProportionateScreenHeight(32),
+                                    ),
                                 ],
                               ),
                             ),
@@ -177,6 +179,9 @@ class _BodyState extends State<Body> {
                       text: 'Преглед',
                       onPress: () {
                         if (data.selectedParty != null) {
+                          if (data.cheatEnabled == true &&
+                              data.cheatNumber != data.selectedParty.number)
+                            return;
                           Navigator.pushReplacement(
                             context,
                             PageRouteBuilder(
