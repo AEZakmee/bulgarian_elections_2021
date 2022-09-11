@@ -70,25 +70,27 @@ class _BodyState extends State<Body> {
                               ),
                               child: Row(
                                 children: [
-                                  DefaultEmptyButton(
-                                    text: 'Предишен',
-                                    onPress: () {
-                                      data.prevPage();
-                                    },
-                                    size: getProportionateScreenWidth(90),
-                                    verticalSize:
-                                        getProportionateScreenHeight(35),
-                                  ),
+                                  if (data.showPrevButton())
+                                    DefaultEmptyButton(
+                                      text: 'Предишна стр.',
+                                      onPress: () {
+                                        data.prevPage();
+                                      },
+                                      size: getProportionateScreenWidth(90),
+                                      verticalSize:
+                                          getProportionateScreenHeight(35),
+                                    ),
                                   Spacer(),
-                                  DefaultEmptyButton(
-                                    text: 'Следващ',
-                                    onPress: () {
-                                      data.nextPage();
-                                    },
-                                    size: getProportionateScreenWidth(90),
-                                    verticalSize:
-                                        getProportionateScreenHeight(35),
-                                  ),
+                                  if (data.showNextButton())
+                                    DefaultEmptyButton(
+                                      text: 'Следваща стр.',
+                                      onPress: () {
+                                        data.nextPage();
+                                      },
+                                      size: getProportionateScreenWidth(90),
+                                      verticalSize:
+                                          getProportionateScreenHeight(35),
+                                    ),
                                 ],
                               ),
                             ),

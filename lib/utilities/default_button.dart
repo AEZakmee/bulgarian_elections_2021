@@ -28,7 +28,7 @@ class DefaultButton extends StatelessWidget {
       child: Material(
         color: color,
         elevation: 5,
-        borderRadius: BorderRadius.circular(getProportionateScreenHeight(10)),
+        borderRadius: BorderRadius.circular(getProportionateScreenHeight(5)),
         child: MaterialButton(
           child: Text(
             text,
@@ -71,7 +71,7 @@ class DefaultEmptyButton extends StatelessWidget {
         width: size,
         decoration: BoxDecoration(
           color: color,
-          borderRadius: BorderRadius.circular(getProportionateScreenHeight(10)),
+          borderRadius: BorderRadius.circular(getProportionateScreenHeight(5)),
           border: Border.all(color: kDefaultColor),
         ),
         child: Center(

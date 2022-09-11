@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:mashinno_glasuvane/model/political_party.dart';
 
+import '../constants.dart';
+
 class Data extends ChangeNotifier {
   List<PoliticalParty> _parties = [];
 
@@ -39,12 +41,15 @@ class Data extends ChangeNotifier {
   List<PoliticalParty> get partiesSubList => _partiesSubList;
   int _currentPage = 0;
   void nextPage() {
-    if (_currentPage < _parties.length ~/ 13) {
+    if (_currentPage < _parties.length ~/ kPartiesInPage) {
       _currentPage++;
       _loadNewList();
       notifyListeners();
     }
   }
+
+  bool showPrevButton() => _currentPage > 0;
+  bool showNextButton() => _currentPage < 1;
 
   void prevPage() {
     if (_currentPage > 0) {
@@ -62,10 +67,10 @@ class Data extends ChangeNotifier {
 
   void _loadNewList() {
     _partiesSubList = _parties.sublist(
-        _currentPage * 13,
-        _currentPage * 13 + 13 > _parties.length
+        _currentPage * kPartiesInPage,
+        _currentPage * kPartiesInPage + kPartiesInPage > _parties.length
             ? _parties.length
-            : _currentPage * 13 + 13);
+            : _currentPage * kPartiesInPage + kPartiesInPage);
   }
 
   PoliticalParty selectedParty;
