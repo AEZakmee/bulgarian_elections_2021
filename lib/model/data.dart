@@ -1,8 +1,27 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:mashinno_glasuvane/model/political_party.dart';
 
 class Data extends ChangeNotifier {
   List<PoliticalParty> _parties = [];
+
+  void init() async {
+    final String response = await rootBundle.loadString(
+      'assets/demo_data.json',
+    );
+    final data = await json.decode(response);
+    List<PoliticalParty> parties = [];
+
+    data['parties'].forEach((v) {
+      parties.add(PoliticalParty.fromJson(v));
+    });
+
+    setPeopleNumber(data['peopleNumber']);
+    loadParties(parties);
+  }
+
   void loadParties(List<PoliticalParty> data) {
     _parties = data;
     _loadNewList();
@@ -13,7 +32,6 @@ class Data extends ChangeNotifier {
   int get numberPeople => _numberPeople;
   void setPeopleNumber(int number) {
     _numberPeople = number;
-    //print('people loaded, total of $_numberPeople');
     notifyListeners();
   }
 

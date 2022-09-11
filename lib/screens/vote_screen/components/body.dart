@@ -73,7 +73,6 @@ class _BodyState extends State<Body> {
                                   DefaultEmptyButton(
                                     text: 'Предишен',
                                     onPress: () {
-                                      print('clocked prev');
                                       data.prevPage();
                                     },
                                     size: getProportionateScreenWidth(90),
@@ -84,7 +83,6 @@ class _BodyState extends State<Body> {
                                   DefaultEmptyButton(
                                     text: 'Следващ',
                                     onPress: () {
-                                      print('clocked next');
                                       data.nextPage();
                                     },
                                     size: getProportionateScreenWidth(90),
