@@ -80,7 +80,7 @@ class DefaultEmptyButton extends StatelessWidget {
             textAlign: TextAlign.center,
             style: TextStyle(
               color: textColor,
-              fontSize: verticalSize / 2.5,
+              fontSize: verticalSize / 3,
               fontWeight: FontWeight.w800,
             ),
           ),
