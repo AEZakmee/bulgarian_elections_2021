@@ -17,7 +17,7 @@ class PartyRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
+    return GestureDetector(
       onTap: onPress,
       child: Column(
         mainAxisSize: MainAxisSize.min,
