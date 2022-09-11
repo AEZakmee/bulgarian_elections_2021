@@ -62,7 +62,6 @@ class Data extends ChangeNotifier {
   void firstPage() {
     _currentPage = 0;
     _loadNewList();
-    notifyListeners();
   }
 
   void _loadNewList() {
@@ -91,6 +90,5 @@ class Data extends ChangeNotifier {
   void clearVote() {
     selectedPerson = null;
     selectedParty = null;
-    notifyListeners();
   }
 }

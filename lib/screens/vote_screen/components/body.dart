@@ -28,9 +28,9 @@ class _BodyState extends State<Body> {
               children: [
                 Spacer(),
                 Text(
-                  'Парламентарни избори 2021',
+                  'Избори за народни представители',
                   style: TextStyle(
-                    fontSize: getProportionateScreenWidth(20),
+                    fontSize: getProportionateScreenWidth(13),
                     fontWeight: FontWeight.w600,
                   ),
                 ),
@@ -187,12 +187,14 @@ class _BodyState extends State<Body> {
                           );
                         }
                       },
-                      size: getProportionateScreenWidth(150),
                       verticalSize: getProportionateScreenHeight(40),
+                      size: getProportionateScreenWidth(200),
                     ),
                   ],
                 ),
-                Spacer(),
+                SizedBox(
+                  height: getProportionateScreenHeight(15),
+                ),
               ],
             );
           }),
