@@ -18,12 +18,14 @@ class _BodyState extends State<Body> {
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
-    return SafeArea(
-      child: Center(
+    return Center(
+      child: SafeArea(
         child: Container(
+          height: SizeConfig.screenHeight,
           width: SizeConfig.screenWidth - getProportionateScreenWidth(10),
           child: Consumer<Data>(builder: (context, data, child) {
             return Column(
+              mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Spacer(),
@@ -171,6 +173,7 @@ class _BodyState extends State<Body> {
                 SizedBox(
                   height: getProportionateScreenHeight(15),
                 ),
+                Spacer(),
                 Row(
                   children: [
                     Spacer(),
